@@ -18,8 +18,10 @@ RUN mkdir -p /var/run/mysqld && chown -R mysql:mysql /var/run/mysqld
 # Install pip packages
 RUN pip3 install mysqlclient flasgger flask flask-cors flask-restful flask-sqlalchemy requests
 
-# set working dir
+# Install netcat
+RUN apt-get update && apt-get install -y netcat && apt-get clean
 
+# set working dir
 WORKDIR /usr/src/app
 
 # Copy application
@@ -34,11 +36,14 @@ EXPOSE 50000
 EXPOSE 5001
 
 # AirBnB Clone Environment Variables
+ENV PYTHONPATH ="/usr/src/app"
 ENV HBNB_MYSQL_USER=hbnb_dev
 ENV HBNB_MYSQL_PWD=hbnb_dev_pwd
 ENV HBNB_MYSQL_HOST=localhost
 ENV HBNB_MYSQL_DB=hbnb_dev_db
 ENV HBNB_TYPE_STORAGE=db
+ENV HBNB_API_PORT=5001
+ENV HBNB_API_HOST=0.0.0.0
 
 COPY entrypoint.sh /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh

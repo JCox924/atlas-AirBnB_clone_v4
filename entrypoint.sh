@@ -25,11 +25,22 @@ if [ -z "$(mysql -u root -p${HBNB_MYSQL_PWD} -e 'SHOW TABLES;' ${HBNB_MYSQL_DB})
     mysql -u root -p${HBNB_MYSQL_PWD} ${HBNB_MYSQL_DB} < /docker-entrypoint-initdb.d/hbnb_dump.sql
 fi
 
-export PYTHONPATH=/usr/src/app
+# Export PYTHONPATH
+export PYTHONPATH="/usr/src/app"
 
-echo "launching file"
-cd web_dynamic/
-python3 1-hbnb.py
+# Launch the API server in the background
+echo "Launching API server..."
+cd api/v1/
+python3 app.py &
+api_pid=$!
 
-# Execute the passed command
-exec "$@" || tail -f /dev/null
+# Allow some time for the API server to start
+sleep 10
+
+# Launch the web application
+echo "Launching web application..."
+cd ../../web_dynamic/
+python3 2-hbnb.py
+
+# Execute the passed command or keep the container running
+exec "$@" || wait $api_pid || tail -f /dev/null

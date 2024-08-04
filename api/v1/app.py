@@ -7,16 +7,21 @@ from flask import Flask, render_template, make_response, jsonify
 from flask_cors import CORS
 from flasgger import Swagger
 from flasgger.utils import swag_from
+import logging
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
-cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
+cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 @app.teardown_appcontext
 def close_db(error):
     """ Close Storage """
+    logger.debug("Closing storage")
     storage.close()
 
 
@@ -40,10 +45,7 @@ Swagger(app)
 
 if __name__ == "__main__":
     """ Main Function """
-    host = environ.get('HBNB_API_HOST')
-    port = environ.get('HBNB_API_PORT')
-    if not host:
-        host = '0.0.0.0'
-    if not port:
-        port = '5000'
+    host = environ.get('HBNB_API_HOST', '0.0.0.0')
+    port = environ.get('HBNB_API_PORT', '5001')
+    logger.info(f"Starting API server on {host}:{port}")
     app.run(host=host, port=port, threaded=True)
