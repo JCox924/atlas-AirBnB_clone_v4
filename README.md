@@ -22,7 +22,7 @@ The console is the first segment of the AirBnB project at Holberton School that 
 This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
 
 ## Installation
-* Clone this repository: `git clone "https://github.com/alexaorrico/AirBnB_clone.git"`
+* Clone this repository: `git clone "https://github.com/JCox924/atlas-AirBnB_clone_v4.git"`
 * Access AirBnb directory: `cd AirBnB_clone`
 * Run hbnb(interactively): `./console` and enter command
 * Run hbnb(non-interactively): `echo "<command>" | ./console.py`
@@ -149,7 +149,14 @@ EOF  all  create  destroy  help  quit  show  update
 ** no instance found **
 (hbnb) quit
 ```
-
+### Or just use the Dockerfile
+[ /Dockerfile ](Dockerfile)
+```shell
+docker build -t hbnb_app .  
+```
+```shell
+docker run -p 50000:50000 -p 5001:5001 hbnb_app
+```
 ## Bugs
 No known bugs at this time. 
 
@@ -159,10 +166,11 @@ Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://tw
 Jhoan Zamora - [Github](https://github.com/jzamora5) / [Twitter](https://twitter.com/JhoanZamora10)  
 David Ovalle - [Github](https://github.com/Nukemenonai) / [Twitter](https://twitter.com/disartDave)
 
-Second part of Airbnb: Joann Vuong
+### Second part of Airbnb: 
+Joann Vuong
 
-Version 4:<br>
+### Version 4:<br>
 Joshua Cox - [Github](https://github.com/JCox924)<br>
-Bret Johnson - [Github](<github url>)
+Bret Johnson - [Github](https://github.com/BretJohnson1)
 ## License
 Public Domain. No copy write protection. 
