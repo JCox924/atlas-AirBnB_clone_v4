@@ -14,24 +14,32 @@ $(document).ready(function() {
         $('#api_status').removeClass('api-available').attr('title', 'API Status: Failed');
     });
 
-    let listOfCheckedAmenities = {}
+    let CheckedAmenities = {}
 
-    $('input').change(function() {
+    $('input[type="checkbox"]').change(function() {
+        const amenityID = $(this).data('id')
         const amenityName = $(this).attr("data-name");
         if (this.checked) {
-            listOfCheckedAmenities.push(amenityName);
+            CheckedAmenities[amenityID] = amenityName;
         } else {
-            listOfCheckedAmenities = listOfCheckedAmenities.filter((item) => item !== amenityName);
+            delete CheckedAmenities[amenityID]
         }
-        $('div.amenities h4').text(listOfCheckedAmenities.join(', '));
+
+        const amenitiesList = Object.values(CheckedAmenities).join(', ');
+        $('div.amenities h4').text(amenitiesList);
     });
 
-    $.ajax({
+    function search_by_filter() {
+        const amenities = Object.keys(CheckedAmenities);
+        const filters = JSON.stringify({amenities: amenities});
+
+        $.ajax({
         url: apiUrl,
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({}),
+        data: filters,
         success: function(places) {
+            $('.places').empty();
             $.each(places, function(index, place) {
                 const placeHtml = `
                     <article>
@@ -56,4 +64,13 @@ $(document).ready(function() {
             console.error('Failed to retrieve places');
         }
     });
+    }
+
+    // Trigger search on button click
+    $('button').click(function() {
+        search_by_filter();
+    });
+
+    // Initial search with no filters
+    search_by_filter();
 });
