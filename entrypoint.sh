@@ -40,7 +40,7 @@ sleep 10
 # Launch the web application
 echo "Launching web application..."
 cd ../../web_dynamic/
-python3 2-hbnb.py
+python3 3-hbnb.py
 
 # Execute the passed command or keep the container running
 exec "$@" || wait $api_pid || tail -f /dev/null
