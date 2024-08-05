@@ -2,17 +2,6 @@ $(document).ready(function() {
     const apiUrl = 'http://0.0.0.0:5001/api/v1/places_search/';
     const apiStatUrl = 'http://0.0.0.0:5001/api/v1/status/'
 
-    let listOfCheckedAmenities = []
-    $('input').change(function() {
-        const amenityName = $(this).attr("data-name");
-        if (this.checked) {
-            listOfCheckedAmenities.push(amenityName);
-        } else {
-            listOfCheckedAmenities = listOfCheckedAmenities.filter((item) => item !== amenityName);
-        }
-        $('div.amenities h4').text(listOfCheckedAmenities.join(', '));
-    });
-
     $.get(apiStatUrl, function(data) {
         if (data.status === "OK") {
             $('#api_status').addClass('api-available').attr('title', 'API Status: API connected');
@@ -23,6 +12,18 @@ $(document).ready(function() {
         }
     }).fail(function() {
         $('#api_status').removeClass('api-available').attr('title', 'API Status: Failed');
+    });
+
+    let listOfCheckedAmenities = {}
+
+    $('input').change(function() {
+        const amenityName = $(this).attr("data-name");
+        if (this.checked) {
+            listOfCheckedAmenities.push(amenityName);
+        } else {
+            listOfCheckedAmenities = listOfCheckedAmenities.filter((item) => item !== amenityName);
+        }
+        $('div.amenities h4').text(listOfCheckedAmenities.join(', '));
     });
 
     $.ajax({
