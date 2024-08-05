@@ -15,7 +15,7 @@ $(document).ready(function() {
 
     $.get(apiStatUrl, function(data) {
         if (data.status === "OK") {
-            $('#api_status').addClass('api-available');
+            $('#api_status').addClass('api-available').attr('title', 'API Status: API connected');
             console.log('API status OK, class added');
         } else {
         $('#api_status').removeClass('api-available');
