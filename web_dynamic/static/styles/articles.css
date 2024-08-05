@@ -1,0 +1,74 @@
+/* Styling the article container */
+.places {
+  display: flex;
+  flex-wrap: wrap; /* Allow articles to wrap onto the next line */
+  gap: 20px; /* Add space between articles */
+  justify-content: center; /* Center articles in the container */
+}
+
+/* Styling individual place articles */
+.places article {
+  background-color: #f5f5f5; /* Light grey for the article background */
+  border: 1px solid #e0f7fa; /* Light teal border for articles */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 300px; /* Max width to ensure consistency */
+  padding: 15px; /* Padding for inner content spacing */
+  transition: transform 0.3s ease; /* Smooth hover transition */
+}
+
+.places article:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Title styling */
+.title_box h2 {
+  color: #333; /* Dark grey for the title */
+  font-size: 1.5em; /* Larger font size for prominence */
+  margin: 0 0 10px 0; /* Space below the title */
+}
+
+/* Price styling */
+.price_by_night {
+  background-color: #ffcccc; /* Light red background for emphasis */
+  color: #fff; /* White text for contrast */
+  padding: 5px 10px; /* Padding around the price */
+  border-radius: 4px; /* Rounded corners */
+  font-weight: bold; /* Bold text for emphasis */
+}
+
+/* Information section styling */
+.information {
+  display: flex;
+  justify-content: space-between; /* Space out the information blocks */
+  margin-top: 10px; /* Margin above the information section */
+}
+
+.information div {
+  color: #555; /* Medium grey for secondary text */
+  font-size: 0.9em; /* Slightly smaller text for information */
+}
+
+/* Description styling */
+.description {
+  color: #666; /* Light grey for the description text */
+  font-size: 0.9em; /* Consistent size with information text */
+  margin-top: 10px; /* Margin above the description */
+}
+
+/* Button styling */
+.button {
+  background-color: #ff545f; /* Accent color for buttons */
+  color: #fff; /* White text for contrast */
+  padding: 8px 16px; /* Padding for button size */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  text-align: center; /* Center text within button */
+  margin-top: 10px; /* Margin above the button */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.button:hover {
+  background-color: #e0444f; /* Darker red on hover */
+}
