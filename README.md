@@ -149,14 +149,18 @@ EOF  all  create  destroy  help  quit  show  update
 ** no instance found **
 (hbnb) quit
 ```
-### Or just use the Dockerfile
+## Using the Dockerfile
+[ Install Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
 [ /Dockerfile ](Dockerfile)
+#### bash
 ```shell
 docker build -t hbnb_app .  
 ```
 ```shell
 docker run -p 50000:50000 -p 5001:5001 hbnb_app
 ```
+## Check it out on the web!
 ## Bugs
 No known bugs at this time. 
 
