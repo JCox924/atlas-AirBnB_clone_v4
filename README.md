@@ -160,7 +160,12 @@ docker build -t hbnb_app .
 ```shell
 docker run -p 50000:50000 -p 5001:5001 hbnb_app
 ```
+This Dockerfile takes care of the MySQL server as well as setting up the<br> evironment variables to have a smoother start process to test new<br> features. The Dockerfile has a entrypoint in which it runs the API<br>
+[/api/v1/app.py](/api/v1/app.py) in the background and the Flask Web App
 ## Check it out on the web!
+After running the docker container successfully<br>
+Visit: [http:/localhost:50000/4-hbnb]()
+![Example](images/Screenshot_hbnb.png)
 ## Bugs
 No known bugs at this time. 
 

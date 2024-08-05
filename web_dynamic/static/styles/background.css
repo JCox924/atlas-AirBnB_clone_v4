@@ -1,0 +1,16 @@
+body {
+  /* Ensure the gradient covers the entire viewport */
+  min-height: 100vh;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  /* Define the linear gradient from bottom to top */
+  background: linear-gradient(to top, #ffcccc, #e0f7fa);
+  /* #ffcccc is a light red and #e0f7fa is a light teal */
+}
+
+/* Ensure your content aligns properly within the gradient */
+.container {
+  max-width: 1200px; /* Define max width for your content */
+  margin: 0 auto; /* Center align the content horizontally */
+  padding: 20px; /* Add padding for spacing */
+}
